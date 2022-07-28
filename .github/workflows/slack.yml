@@ -1,0 +1,9 @@
+- name: Send Slack notification when Github Actions fails
+  uses: act10ns/slack@v1
+  with: 
+    status: ${{ job.status }}
+    channel: '#jenkins-cac'
+    message: "jenkins-cac GitHub action deployment failed."
+    notify_when: 'failure'      
+  if: always()
+  
