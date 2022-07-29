@@ -28,7 +28,7 @@ jobs:
       uses: act10ns/slack@v1
       with: 
         status: starting
-        channel: '#meetups'
+        channel: '#jenkins'
         message: Starting Build and Deploy...
       if: always()
       
@@ -63,7 +63,7 @@ jobs:
       uses: act10ns/slack@v1
       with: 
         status: ${{ job.status }}
-        channel: '#meetups'
+        channel: '#jenkins'
         message: Build {{ env.GITHUB_REF_NAME }} branch Successfully
       if: always()
       
@@ -82,7 +82,7 @@ jobs:
       uses: act10ns/slack@v1
       with: 
         status: starting
-        channel: '#meetups'
+        channel: '#jenkins'
         message: Starting Deployment...
       if: always()
       
@@ -112,11 +112,10 @@ jobs:
     - name: Slack Notification
       uses: act10ns/slack@v1
       with: 
-        status: ${{ job.status }}
-        channel: '#meetups'
-        message: Deployed {{ env.GITHUB_REF_NAME }} branch Successfully
+        channel: '#jenkins'
+        message: "Deployed {{ env.GITHUB_REF_NAME }} branch fail"
+        notify_when: "failure"
       if: always()  
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        
-        
+        status: ${{ job.status }}
