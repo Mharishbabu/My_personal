@@ -52,41 +52,9 @@ jobs:
       with:
         payload: |
           {
-            "text": "test.",
-            "blocks": [
-              {
-                "type": "section",
-                "text": {
-                  "type": "mrkdwn",
-                  "text": "test:"
-                }
-              },
-              {
-                "type": "section",
-                "block_id": "section567",
-                "text": {
-                  "type": "mrkdwn",
-                  "text": "test."
-                },
-                "accessory": {
-                  "type": "image",
-                  "image_url": "test",
-                  "alt_text": "test"
-                }
-              },
-              {
-                "type": "section",
-                "block_id": "section789",
-                "fields": [
-                  {
-                    "type": "mrkdwn",
-                    "text": "test"
-                  }
-                ]
-              }
-            ]
+            "text": "Github Action Build Number ${{ github.run_number }} status for ${{ github.repository }} and the outcome is  ${{ needs.ansible-deploy.result }}",
           }
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
-  
+
