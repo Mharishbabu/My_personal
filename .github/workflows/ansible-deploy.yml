@@ -50,8 +50,8 @@ jobs:
         uses: slackapi/slack-github-action@v1.22.0
         with:
           # Required Input
-          slack_webhook_url: ${{secrets.SLACK_WEBHOOK_URL}}
+          slack_webhook_url: https://hooks.slack.com/services/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
           # Optional Input
           channel: '#jenkins-cac'
-          slack-message: "Github Action Build Number ${{ github.run_number }} failed for ${{ github.repository }} and the outcome is  ${{ needs.ansible-deploy.result }}."
+          slack-message: "test-Github Action Build Number ${{ github.run_number }} failed for ${{ github.repository }} and the outcome is  ${{ needs.ansible-deploy.result }}."
           name: 'test'
